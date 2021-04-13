@@ -1,3 +1,5 @@
+# HookInBrook is a project designed to practice API Requests on React with Hooks and State Changes
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
