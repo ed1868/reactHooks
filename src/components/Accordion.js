@@ -1,8 +1,26 @@
 import React from 'react';
 
+
+
+
 const Accordion = ({ items }) => {
-    console.log('   this    are     the     items : ', items);
-    return <h1>Accordion nihh</h1>
+
+    const renderedItems = items.map((item,key) => {
+        return (
+            <React.Fragment key={key}>
+                <div className="title active">
+                    <i className="dropdown icon"></i>
+                    {item.title}
+                </div>
+                <div className="content active">
+                    <p>{item.content}</p>
+                </div>
+        
+            </React.Fragment>
+        )
+        });
+    
+    return <div className="ui styled accordion">{renderedItems}</div>
 }
 
 
