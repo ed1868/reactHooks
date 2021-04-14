@@ -4,14 +4,14 @@ import Accordion from './components/Accordion';
 
 const items = [{
   title: "Why is React js the best?",
-  context: "because it is"
+  content: "because it is"
 },
 {
   title: "Why is Eddie the best?",
-  context: "because he is"
+  content: "because he is"
 }, {
   title: "Coin base IPO?",
-  context: "406"
+  content: "406"
 },
 
 ]
@@ -21,7 +21,7 @@ export default () => {
   
   <div>
     
-    
+    <br></br>
     <Accordion items={items} />
     
 
