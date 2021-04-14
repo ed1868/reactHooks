@@ -22,6 +22,7 @@ export default () => {
   <div>
     
     <br></br>
+    <img src={logo}></img>
     <Accordion items={items} />
     
 
