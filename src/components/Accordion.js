@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Accordion = () => {
+const Accordion = ({ items }) => {
+    console.log('   this    are     the     items : ', items);
     return <h1>Accordion nihh</h1>
 }
 
