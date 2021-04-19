@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Accordion from './components/Accordion';
+// import Accordion from './components/Accordion';
 
 const items = [{
   title: "Why is React js the best?",
@@ -18,13 +18,13 @@ const items = [{
 
 export default () => {
   return (
-  
-  <div>
-    
-    <br></br>
-    <img src={logo}></img>
-    <Accordion items={items} />
-    
+
+    <div>
+
+      <br></br>
+      <img src={logo}></img>
+      {/* <Accordion items={items} /> */}
+
 
     </div>
   )
