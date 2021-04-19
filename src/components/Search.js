@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -6,7 +6,11 @@ const Search = () => {
 
     const [term, setTerm] = useState(null);
 
+    console.log('I run with any render');
 
+    useEffect(() => {
+        console.log('I ONLY RUN ONCE');
+    }, [])
     return (
         <div>
             <div className="ui form">
