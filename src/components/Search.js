@@ -25,7 +25,7 @@ const Search = () => {
 
 
             });
-            setResults(data);
+            setResults(data.query.search);
 
         }
         if (term) {
@@ -67,6 +67,22 @@ const Search = () => {
 
 
     }, [term]);
+
+
+    const renderedResults = results.map((result) => {
+        return (
+            <div className="item" key={result.title}>
+                <div className="content">
+                    <div className="header">
+                        {result.title}
+                    </div>
+                    <span dangerouslySetInnerHTML={{__html: result.snippet}}></span>
+                    {/* {result.snippet} */}
+                </div>
+            </div>
+        );
+    });
+
     return (
         <div>
             <div className="ui form">
@@ -74,6 +90,10 @@ const Search = () => {
                     <label>Search Me: </label>
                     <input value={term} onChange={(e) => setTerm(e.target.value)} className="input" />
                 </div>
+            </div>
+
+            <div className="ui celled list">
+                {renderedResults}
             </div>
         </div>
     )
