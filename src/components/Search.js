@@ -28,11 +28,12 @@ const Search = () => {
             setResults(data.query.search);
 
         }
-        if (term) {
-            search();
-        }
 
-
+        const timeoutId = setTimeout(() => {
+            if (term) {
+                search();
+            }
+        }, 500);
 
 
         // ASYNC AWAIT WITH PROMISES (EDDIE FAV)
@@ -79,7 +80,7 @@ const Search = () => {
                     <div className="header">
                         {result.title}
                     </div>
-                    <span dangerouslySetInnerHTML={{__html: result.snippet}}></span>
+                    <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
                     {/* {result.snippet} */}
                 </div>
             </div>
