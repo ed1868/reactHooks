@@ -29,9 +29,15 @@ const Search = () => {
 
         }
 
+
+
         const timeoutId = setTimeout(() => {
             if (term) {
                 search();
+            }
+
+            return () => {
+                clearTimeout(timeoutId)
             }
         }, 500);
 
