@@ -6,9 +6,23 @@ import axios from 'axios';
 const Search = () => {
 
     const [term, setTerm] = useState(' ');
+    const [debouncedTerm, setDebouncedTerm] = useState(term);
     const [results, setResults] = useState([]);
+
     console.log('RERENDERING...');
     console.log(results);
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setDebouncedTerm(term);
+
+        }, 1000);
+
+
+        return () => {
+            clearTimeout(timerId);
+        }
+    }, [term]);
 
     useEffect(() => {
         //ASYNC AWAIT INSTRUCTOR VERSION
@@ -19,7 +33,7 @@ const Search = () => {
                     list: 'search',
                     origin: '*',
                     format: 'json',
-                    srsearch: term
+                    srsearch: debouncedTerm
 
                 },
 
@@ -28,57 +42,45 @@ const Search = () => {
             setResults(data.query.search);
 
         }
+        search();
 
-
-        if (term && !results.length) {
-            search()
-        } else {
-            const timeoutId = setTimeout(() => {
-                if (term) {
-                    search();
-                }
-
-                return () => {
-                    clearTimeout(timeoutId)
-                }
-            }, 500);
-        }
+    }, [debouncedTerm])
 
 
 
 
-        // ASYNC AWAIT WITH PROMISES (EDDIE FAV)
-        // const eddiesWay = () => {
-        //     axios.get('https://en.wikipedia.org/w/api.php', {
-        //         params: {
-        //             action: 'query',
-        //             list: 'search',
-        //             origin: '*',
-        //             format: 'json',
-        //             srsearch: term
+    // ASYNC AWAIT WITH PROMISES (EDDIE FAV)
+    // const eddiesWay = () => {
+    //     axios.get('https://en.wikipedia.org/w/api.php', {
+    //         params: {
+    //             action: 'query',
+    //             list: 'search',
+    //             origin: '*',
+    //             format: 'json',
+    //             srsearch: term
 
-        //         },
+    //         },
 
-        //     }).then(payload => {
-        //         console.log(`EDDIES PAYLOAD : ${payload}`);
+    //     }).then(payload => {
+    //         console.log(`EDDIES PAYLOAD : ${payload}`);
 
-        //         setResults(payload);
+    //         setResults(payload);
 
-        //     }).catch(err => {
-        //         if (err) {
-        //             console.log(`ERROR: ${err}`);
-        //         }
-        //     });
+    //     }).catch(err => {
+    //         if (err) {
+    //             console.log(`ERROR: ${err}`);
+    //         }
+    //     });
 
-        // }
+    // }
 
-        // if (term) {
-        //     eddiesWay();
-        // }
+    // if (term) {
+    //     eddiesWay();
+    // }
 
 
 
-    }, [term]);
+
 
 
     const renderedResults = results.map((result) => {
