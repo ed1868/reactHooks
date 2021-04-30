@@ -30,16 +30,21 @@ const Search = () => {
         }
 
 
+        if (term && !results.length) {
+            search()
+        } else {
+            const timeoutId = setTimeout(() => {
+                if (term) {
+                    search();
+                }
 
-        const timeoutId = setTimeout(() => {
-            if (term) {
-                search();
-            }
+                return () => {
+                    clearTimeout(timeoutId)
+                }
+            }, 500);
+        }
 
-            return () => {
-                clearTimeout(timeoutId)
-            }
-        }, 500);
+
 
 
         // ASYNC AWAIT WITH PROMISES (EDDIE FAV)
