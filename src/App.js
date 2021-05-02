@@ -1,8 +1,11 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
+
+
 
 const items = [{
   title: "Why is React js the best?",
@@ -34,6 +37,9 @@ const options = [
 ]
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
+  const [selected, setSelected] = useState(options[0]);
+
+
   return (
 
     <div>
@@ -44,7 +50,11 @@ export default () => {
 
       {/* <Search /> */}
 
-      <Dropdown options={options} />
+      <Dropdown options={options}
+        onSelectedChange={setSelected}
+        selected={selected}
+
+      />
 
 
 
