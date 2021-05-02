@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-// import Accordion from './components/Accordion';
+import Accordion from './components/Accordion';
 import Search from './components/Search';
+import Dropdown from './components/Dropdown';
 
 const items = [{
   title: "Why is React js the best?",
@@ -17,6 +18,21 @@ const items = [{
 
 ]
 
+const options = [
+  {
+    label: "red",
+    value: "red"
+  },
+  {
+    label: "green",
+    value: "green"
+  },
+  {
+    label: "blue",
+    value: "blue"
+  }
+]
+// eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
   return (
 
@@ -26,7 +42,10 @@ export default () => {
       {/* <img src={logo}></img> */}
       {/* <Accordion items={items} /> */}
 
-      <Search />
+      {/* <Search /> */}
+
+      <Dropdown options={options} />
+
 
 
     </div>
